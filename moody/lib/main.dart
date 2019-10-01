@@ -7,6 +7,9 @@ class Moody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'QuicksandL',
+      ),
       debugShowCheckedModeBanner: false,
       title: 'Moody',
       home: HomePage(),
