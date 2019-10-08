@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:moody/views/help-screens.dart';
 import 'package:radial_button/widget/circle_floating_button.dart';
 import 'package:mlkit/mlkit.dart';
 
@@ -79,12 +80,23 @@ class _HomePageState extends State<HomePage> {
 
   _buildImage() {
     return SizedBox(
-      height: 200.0,
+      height: 400.0,
       child: Center(
         child: _file == null
-            ? Text(
-                'Please use the button at the bottom to pick an image',
-                style: TextStyle(color: Colors.amberAccent),
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Please use the button at the bottom to pick an image from either the gallery or camera',
+                    style: TextStyle(color: Colors.amberAccent, fontSize: 18.0),
+                    textAlign: TextAlign.center,
+                  ),
+//                  Tab(icon: Image.asset("assets/images/arrow1.png", height: 100.0)),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(10.0, 30.0, 0.0, 0.0),
+                    child: Image(image: AssetImage("assets/images/arrow1.png")),
+                  ),
+                ],
               )
             : FutureBuilder<Size>(
                 future: _getImageSize(Image.file(_file, fit: BoxFit.fitWidth)),
@@ -107,9 +119,15 @@ class _HomePageState extends State<HomePage> {
           Align(
             alignment: Alignment.topRight,
             child: IconButton(
-              icon: Icon(Icons.info_outline, color: Colors.amberAccent),
-              onPressed: null,
-            ),
+                icon: Icon(Icons.info_outline, color: Colors.amberAccent),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HelpScreens(),
+                    ),
+                  );
+                }),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 15.0),
@@ -122,7 +140,7 @@ class _HomePageState extends State<HomePage> {
               child: _buildImage(),
             ),
           ),
-          _showDetails(_face),
+          _showSmileProb(_face),
           _moodGuess(_face),
         ],
       ),
@@ -167,13 +185,19 @@ Future _getImageSize(Image image) {
   return completer.future;
 }
 
-_showDetails(List<VisionFace> faceList) {
+_showSmileProb(List<VisionFace> faceList) {
   if (faceList == null || faceList.length == 0) {
     return Text('', textAlign: TextAlign.center);
   }
   return Container(
     child: Expanded(
-      child: Text("Smile probability: ${faceList[0].smilingProbability}"),
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Text(
+          "Smile probability: ${faceList[0].smilingProbability}",
+          style: TextStyle(color: Colors.amberAccent),
+        ),
+      ),
     ),
   );
 }
@@ -182,8 +206,22 @@ _moodGuess(List<VisionFace> faceList) {
   if (faceList == null || faceList.length == 0) {
     return Text('', textAlign: TextAlign.center);
   } else if (faceList[0].smilingProbability >= 0.5) {
-    return Text("Mood: Happy");
+    return Expanded(
+      child: Column(children: <Widget>[
+        Text("Mood: Happy", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
+        Text("Quote", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
+        Text("Lorem ipsum HAPPY quote", style: TextStyle(color: Colors.amberAccent)),
+        Text("Songs", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
+        Text("Lorem ipsum\nLorem ipsum\nLorem ipsum", style: TextStyle(color: Colors.amberAccent)),
+      ]),
+    );
   } else if (faceList[0].smilingProbability < 0.5) {
-    return Text("Mood: Sad");
+    return Column(children: <Widget>[
+      Text("Mood: Sad", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
+      Text("Quote", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
+      Text("Lorem ipsum SAD quote", style: TextStyle(color: Colors.amberAccent)),
+      Text("Songs", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
+      Text("Lorem ipsum\nLorem ipsum\nLorem ipsum", style: TextStyle(color: Colors.amberAccent)),
+    ]);
   }
 }
