@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "245348272998",
+    "firebase_url": "https://moody-term-4.firebaseio.com",
+    "project_id": "moody-term-4",
+    "storage_bucket": "moody-term-4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245348272998:android:b80f92420400b48cf096a7",
+        "android_client_info": {
+          "package_name": "com.tiffanysvandermerwe.moody"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "245348272998-2cr09sg959pl152bbc77o6068m0li90c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDt_rlOp97BsdjcVcXDqpRdGuX8PoSftNI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "245348272998-2cr09sg959pl152bbc77o6068m0li90c.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "245348272998-7248tirgdlhcq0j5j030nd78popgathj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tiffanysvandermerwe.moody"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
