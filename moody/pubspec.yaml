@@ -14,11 +14,17 @@ dependencies:
   firebase_core: ^0.4.0+9
   firebase_analytics: ^5.0.2
   firebase_storage: ^3.0.6
-  mlkit: ^0.14.1
   image_picker: ^0.6.1+8
   flutter_icons: ^0.3.1
   radial_button: ^0.1.4
   intro_views_flutter: ^2.8.0
+  flutter_youtube: ^2.0.0
+  meta: ^1.1.7
+  mlkit:
+    git:
+      url: git://github.com/azihsoyn/flutter_mlkit.git
+      ref: feature/for_ios_breaking_change
+
 
 dev_dependencies:
   flutter_test:
