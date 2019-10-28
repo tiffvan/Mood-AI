@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:moody/views/help-screens.dart';
 import 'package:radial_button/widget/circle_floating_button.dart';
@@ -34,75 +35,54 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     fabButtons = [
       FloatingActionButton(
-          heroTag: UniqueKey(),
-          backgroundColor: Colors.amberAccent,
-          child: Icon(Icons.camera_alt, color: Colors.pink[900]),
-          tooltip: "Camera",
-          onPressed: () async {
-            var file = await ImagePicker.pickImage(source: ImageSource.camera);
-            setState(
-              () {
-                _file = file;
-              },
-            );
+        heroTag: UniqueKey(),
+        backgroundColor: Colors.amberAccent,
+        child: Icon(Icons.camera_alt, color: Colors.pink[900]),
+        tooltip: "Camera",
+        onPressed: () async {
+          var file = await ImagePicker.pickImage(source: ImageSource.camera);
+          setState(
+            () {
+              _file = file;
+            },
+          );
 
-            var face = await detector.detectFromBinary(_file?.readAsBytesSync(), options);
-            setState(() {
-              if (face.isEmpty) {
-                print('No face detected');
-              } else {
-                _face = face;
-              }
-            });
-          }),
+          var face = await detector.detectFromBinary(_file?.readAsBytesSync(), options);
+          setState(() {
+            if (face.isEmpty) {
+              print('No face detected');
+            } else {
+              _face = face;
+            }
+          });
+        },
+      ),
       FloatingActionButton(
-          heroTag: UniqueKey(),
-          backgroundColor: Colors.amberAccent,
-          tooltip: "Gallery",
-          child: Icon(Icons.image, color: Colors.pink[900]),
-          onPressed: () async {
-            var file = await ImagePicker.pickImage(source: ImageSource.gallery);
-            setState(
-              () {
-                _file = file;
-              },
-            );
+        heroTag: UniqueKey(),
+        backgroundColor: Colors.amberAccent,
+        tooltip: "Gallery",
+        child: Icon(Icons.image, color: Colors.pink[900]),
+        onPressed: () async {
+          var file = await ImagePicker.pickImage(source: ImageSource.gallery);
+          setState(
+            () {
+              _file = file;
+            },
+          );
 
-            var face = await detector.detectFromBinary(_file?.readAsBytesSync(), options);
-            setState(() {
-              if (face.isEmpty) {
-                print('No face detected');
-              } else {
-                _face = face;
-              }
-            });
-          }),
+          var face = await detector.detectFromBinary(_file?.readAsBytesSync(), options);
+          setState(() {
+            if (face.isEmpty) {
+              print('No face detected');
+            } else {
+              _face = face;
+            }
+          });
+        },
+      ),
     ];
     super.initState();
   }
-
-
-
-//  void playYoutubeVideo() {
-//    FlutterYoutube.playYoutubeVideoByUrl(
-//      apiKey: "AIzaSyDWJLD1b_G7IJtmzxq1jQtfh0pLXd1rnx4",
-//      videoUrl: "https://www.youtube.com/watch?v=ZbZSe6N_BXs",
-//    );
-//  }
-//
-//  void playYoutubeURL() {
-//    FlutterYoutube.onVideoEnded.listen((onData) {
-//      //perform your action when video playing is done
-//    });
-//
-//    FlutterYoutube.playYoutubeVideoByUrl(
-//      apiKey: "AIzaSyDWJLD1b_G7IJtmzxq1jQtfh0pLXd1rnx4",
-//      videoUrl: textEditingControllerUrl.text,
-//      autoPlay: true,
-//    );
-//  }
-
-
 
   _buildImage() {
     return SizedBox(
@@ -144,7 +124,7 @@ class _HomePageState extends State<HomePage> {
           Align(
             alignment: Alignment.topRight,
             child: IconButton(
-                icon: Icon(Icons.info_outline, color: Colors.amberAccent),
+                icon: Icon(Icons.info_outline, color: Colors.pink[900]),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -156,7 +136,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Padding(
             padding: EdgeInsets.only(bottom: 15.0),
-            child: Text("Moody", style: TextStyle(color: Colors.amberAccent, fontSize: 45.0, fontFamily: 'QuicksandB')),
+            child: Text("Be Happy!", style: TextStyle(color: Colors.amberAccent, fontSize: 45.0, fontFamily: 'QuicksandB')),
           ),
           Padding(
             padding: EdgeInsets.only(left: 8.0, right: 8.0),
@@ -165,7 +145,7 @@ class _HomePageState extends State<HomePage> {
               child: _buildImage(),
             ),
           ),
-          _showSmileProb(_face),
+//          _showSmileProb(_face),
           Padding(
             padding: EdgeInsets.only(top: 15.0),
             child: _moodGuess(_face),
@@ -181,23 +161,8 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Color(0xff212121),
       body: Container(
         alignment: Alignment.center,
-//        decoration: BoxDecoration(
-//          gradient: LinearGradient(
-//            begin: Alignment.topRight,
-//            end: Alignment.bottomLeft,
-//            stops: [0.1, 0.5, 0.7, 0.9],
-//            colors: [
-//              Colors.pink[900],
-//              Colors.purple[900],
-//              Colors.purple[800],
-//              Colors.blue[800],
-//            ],
-//          ),
-//        ),
         child: _content(),
       ),
-
-
       floatingActionButton: CircleFloatingButton.floatingActionButton(
         key: key,
         items: fabButtons,
@@ -210,7 +175,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future _getImageSize(Image image) {
-    Completer<Size> completer = new Completer<Size>();
+    Completer<Size> completer = Completer<Size>();
     image.image.resolve(ImageConfiguration()).addListener(ImageStreamListener((ImageInfo info, bool _) => completer.complete(Size(info.image.width.toDouble(), info.image.height.toDouble()))));
     return completer.future;
   }
@@ -220,12 +185,9 @@ class _HomePageState extends State<HomePage> {
       return Text('', textAlign: TextAlign.center);
     }
     return Container(
-      child: Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Text(
-          "Smile probability: ${faceList[0].smilingProbability}",
-          style: TextStyle(color: Colors.amberAccent),
-        ),
+      child: Text(
+        "Smile probability: ${faceList[0].smilingProbability}",
+        style: TextStyle(color: Colors.amberAccent),
       ),
     );
   }
@@ -245,7 +207,6 @@ class _HomePageState extends State<HomePage> {
         FlutterYoutube.onVideoEnded.listen((onData) {
           //perform your action when video playing is done
         });
-
         FlutterYoutube.playYoutubeVideoByUrl(
           apiKey: "AIzaSyDWJLD1b_G7IJtmzxq1jQtfh0pLXd1rnx4",
           videoUrl: textEditingControllerUrl.text,
@@ -253,11 +214,18 @@ class _HomePageState extends State<HomePage> {
         );
       }
       return Column(children: <Widget>[
-        Text("You are HAPPY!", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
-        Text("Song", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
-        FlatButton(
-            child: new Text("Play 'Happy' - Pharrell Williams", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.normal)),
-            onPressed: playYoutubeVideo),
+        Text("You are HAPPY!", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold, fontSize: 22.0)),
+        Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: GradientButton(
+            child: Text('Play a lekker song!', style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
+            increaseWidthBy: 100.0,
+            increaseHeightBy: 20.0,
+            callback: playYoutubeVideo,
+            gradient: Gradients.blush,
+            shadowColor: Gradients.blush.colors.last.withOpacity(0.25),
+          ),
+        ),
       ]);
     } else if (faceList[0].smilingProbability < 0.5) {
       //YOUTUBE
@@ -271,7 +239,6 @@ class _HomePageState extends State<HomePage> {
         FlutterYoutube.onVideoEnded.listen((onData) {
           //perform your action when video playing is done
         });
-
         FlutterYoutube.playYoutubeVideoByUrl(
           apiKey: "AIzaSyDWJLD1b_G7IJtmzxq1jQtfh0pLXd1rnx4",
           videoUrl: textEditingControllerUrl.text,
@@ -279,14 +246,19 @@ class _HomePageState extends State<HomePage> {
         );
       }
       return Column(children: <Widget>[
-        Text("You are SAD!", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
-        Text("Songs", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
-        FlatButton(
-            child: new Text("Play some cute animals!", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.normal)),
-            onPressed: playYoutubeVideo),
+        Text("You are SAD!", style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold, fontSize: 22.0)),
+        Padding(
+          padding: const EdgeInsets.only(top: 15.0),
+          child: GradientButton(
+            child: Text('Lets get happy!', style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
+            increaseWidthBy: 100.0,
+            increaseHeightBy: 20.0,
+            callback: playYoutubeVideo,
+            gradient: Gradients.tameer,
+            shadowColor: Gradients.blush.colors.last.withOpacity(0.25),
+          ),
+        ),
       ]);
     }
   }
 }
-
-

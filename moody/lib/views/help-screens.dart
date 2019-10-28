@@ -6,49 +6,49 @@ import 'package:moody/views/home_page.dart';
 class HelpScreens extends StatelessWidget {
   final helpPages = [
     PageViewModel(
-        pageColor: const Color(0xFF850D52),
-        bubble: Image.asset('assets/images/blue.png'),
+        pageColor: const Color(0xFF212121),
+        bubble: Image.asset('assets/images/yellow.png'),
         body: Text(
-          'Moody is a fun app that allows you to have your mood guessed which then gives some music suggestions, based on your mood',
+          'Be Happy is a fun app that allows you to take your mood from sad to happy in an instant with a cute video! If you\'re happy you\'ll get a cool song!'
         ),
         title: Text(
-          'What is Moody?',
+          'Be Happy',
         ),
         titleTextStyle: TextStyle(fontFamily: 'QuicksandB', fontSize: 45.0, color: Colors.amberAccent),
         bodyTextStyle: TextStyle(fontFamily: 'QuicksandL', fontSize: 20.0, color: Colors.amberAccent),
         mainImage: Image.asset(
-          'assets/images/pic1.jpg',
-          height: 350.0,
-          width: 350.0,
+          'assets/images/smilePink.png',
+          height: 400.0,
+          width: 400.0,
           alignment: Alignment.center,
         )),
     PageViewModel(
-      pageColor: const Color(0xFF4B148B),
-      iconImageAssetPath: 'assets/images/pink.png',
+      pageColor: const Color(0xFF212121),
+      iconImageAssetPath: 'assets/images/yellow.png',
       body: Text(
         'You can either take a picture of yourself with the camera or choose a picture from your gallery',
       ),
       title: Text('Picture options'),
       mainImage: Image.asset(
-        'assets/images/pic2.jpg',
-        height: 350.0,
-        width: 350.0,
+        'assets/images/buttons.png',
+        height: 400.0,
+        width: 400.0,
         alignment: Alignment.center,
       ),
       titleTextStyle: TextStyle(fontFamily: 'QuicksandB', fontSize: 45.0, color: Colors.amberAccent),
       bodyTextStyle: TextStyle(fontFamily: 'QuicksandL', fontSize: 20.0, color: Colors.amberAccent),
     ),
     PageViewModel(
-      pageColor: const Color(0xFF1565C0),
-      iconImageAssetPath: 'assets/images/purple.png',
+      pageColor: const Color(0xFF212121),
+      iconImageAssetPath: 'assets/images/yellow.png',
       body: Text(
-        'Once you have picked or taken your picture, you will recieve some music suggestions for that mood',
+        'You can improve your mood and get a cool video!',
       ),
       title: Text('Why?'),
       mainImage: Image.asset(
-        'assets/images/pic3.jpg',
-        height: 350.0,
-        width: 350.0,
+        'assets/images/video.png',
+        height: 400.0,
+        width: 400.0,
         alignment: Alignment.center,
       ),
       titleTextStyle: TextStyle(fontFamily: 'QuicksandB', fontSize: 45.0, color: Colors.amberAccent),
@@ -68,7 +68,7 @@ class HelpScreens extends StatelessWidget {
         },
         pageButtonTextStyles: TextStyle(
           color: Colors.amberAccent,
-          fontSize: 15.0,
+          fontSize: 13.0,
         ),
       ), //IntroViewsFlutter
     ); //Builder

@@ -18,6 +18,8 @@ dependencies:
   flutter_icons: ^0.3.1
   radial_button: ^0.1.4
   intro_views_flutter: ^2.8.0
+  nice_button: ^0.1.7
+  gradient_widgets: ^0.5.0
   flutter_youtube: ^2.0.0
   meta: ^1.1.7
   mlkit:
@@ -48,11 +50,8 @@ flutter:
     - assets/images/pic2.jpg
     - assets/images/pic3.jpg
     - assets/images/pic4.jpg
-    - assets/images/pic1C.png
-    - assets/images/pic2C.png
-    - assets/images/pic3C.png
-    - assets/images/pic4C.png
-    - assets/images/pink.png
-    - assets/images/purple.png
-    - assets/images/blue.png
+    - assets/images/yellow.png
+    - assets/images/video.png
+    - assets/images/smilePink.png
+    - assets/images/buttons.png
 
