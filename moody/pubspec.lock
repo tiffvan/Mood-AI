@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
+  dots_indicator:
+    dependency: transitive
+    description:
+      name: dots_indicator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.5+1"
   firebase_analytics:
     dependency: "direct main"
     description:
@@ -130,13 +137,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.1+8"
-  intro_views_flutter:
+  introduction_screen:
     dependency: "direct main"
     description:
-      name: intro_views_flutter
+      name: introduction_screen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.8.0"
+    version: "1.0.6"
   matcher:
     dependency: transitive
     description:
