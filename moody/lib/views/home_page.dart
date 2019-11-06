@@ -20,9 +20,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Widget> fabButtons;
   GlobalKey<CircleFloatingButtonState> key = GlobalKey<CircleFloatingButtonState>();
+  //Youtube set up
   TextEditingController textEditingControllerUrl = new TextEditingController();
   TextEditingController textEditingControllerId = new TextEditingController();
 
+
+  //Firebase, Vision and file type
   File _file;
 
   List<VisionFace> _face = <VisionFace>[];
@@ -31,6 +34,7 @@ class _HomePageState extends State<HomePage> {
 
   FirebaseVisionFaceDetector detector = FirebaseVisionFaceDetector.instance;
 
+  //Camera and gallery
   @override
   void initState() {
     fabButtons = [
@@ -84,6 +88,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  //show image
   _buildImage() {
     return SizedBox(
       height: 350.0,
@@ -117,6 +122,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  //content
   _content() {
     return SafeArea(
       child: Column(
@@ -155,6 +161,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  //content area and fab
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -174,6 +181,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  //display image
   Future _getImageSize(Image image) {
     Completer<Size> completer = Completer<Size>();
     image.image.resolve(ImageConfiguration()).addListener(ImageStreamListener((ImageInfo info, bool _) => completer.complete(Size(info.image.width.toDouble(), info.image.height.toDouble()))));
@@ -192,6 +200,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  //guess and buttons
   _moodGuess(List<VisionFace> faceList) {
     if (faceList == null || faceList.length == 0) {
       return Text('', textAlign: TextAlign.center);
