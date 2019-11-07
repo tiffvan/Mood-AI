@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
           Align(
             alignment: Alignment.topRight,
             child: IconButton(
-                icon: Icon(Icons.info_outline, color: Colors.pink[900]),
+                icon: Icon(Icons.info_outline, color: Colors.amberAccent),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -202,6 +202,9 @@ class _HomePageState extends State<HomePage> {
 
   //guess and buttons
   _moodGuess(List<VisionFace> faceList) {
+
+
+
     if (faceList == null || faceList.length == 0) {
       return Text('', textAlign: TextAlign.center);
     } else if (faceList[0].smilingProbability >= 0.5) {
@@ -227,7 +230,7 @@ class _HomePageState extends State<HomePage> {
         Padding(
           padding: const EdgeInsets.only(top: 10.0),
           child: GradientButton(
-            child: Text('Play a lekker song!', style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
+            child: Text('Play a cool song!', style: TextStyle(color: Colors.amberAccent, fontWeight: FontWeight.bold)),
             increaseWidthBy: 100.0,
             increaseHeightBy: 20.0,
             callback: playYoutubeVideo,

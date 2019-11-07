@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moody/helpers/intro_screen.dart';
 import 'package:moody/views/home_page.dart';
 
 void main() => runApp(Moody());
@@ -12,7 +13,7 @@ class Moody extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       title: 'Moody',
-      home: HomePage(),
+      home: HelpScreens(),
     );
   }
 }
